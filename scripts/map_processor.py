@@ -134,12 +134,14 @@ def parse_map_file(map_config, map_filename, api, suffix=""):
 
     vacuum_config = VacuumConfig(
         XiaomiCloudConnector("", ""),
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
+        "",  # country
+        "",  # details
+        "",  # server
+        "",  # device_id
+        "",  # host
+        "",  # token
+        "",  # model
+        "",  # mac
         palette=ColorsPalette(
             colors_dict=colors, room_colors={str(k): v for k, v in room_colors.items()}
         ),

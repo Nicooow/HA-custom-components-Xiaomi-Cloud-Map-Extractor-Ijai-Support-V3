@@ -175,6 +175,7 @@ class XiaomiCloudMapExtractorConnector:
         )
         vacuum_config = VacuumConfig(
             self._cloud_connector,
+            self._config.server,  # as country
             device_details,
             self._config.server,
             self._config.device_id,
