@@ -34,6 +34,7 @@ class VacuumApi(StrEnum):
     VIOMI = "VIOMI"
     ROIDMI = "ROIDMI"
     DREAME = "DREAME"
+    IJAI = "IJAI"
     UNSUPPORTED = "UNSUPPORTED"
 
     @staticmethod
@@ -42,9 +43,16 @@ class VacuumApi(StrEnum):
             return API_EXCEPTIONS[vacuum_model]
 
         def list_contains_model(prefixes, model_to_check):
-            return len(list(filter(lambda x: model_to_check.startswith(x), prefixes))) > 0
+            return (
+                len(list(filter(lambda x: model_to_check.startswith(x), prefixes))) > 0
+            )
 
-        filtered = list(filter(lambda x: list_contains_model(x[1], vacuum_model), AVAILABLE_APIS.items()))
+        filtered = list(
+            filter(
+                lambda x: list_contains_model(x[1], vacuum_model),
+                AVAILABLE_APIS.items(),
+            )
+        )
         if len(filtered) > 0:
             return filtered[0][0]
         return VacuumApi.UNSUPPORTED
@@ -54,7 +62,8 @@ AVAILABLE_APIS = {
     VacuumApi.DREAME: ["dreame.vacuum."],
     VacuumApi.ROIDMI: ["roidmi.vacuum.", "zhimi.vacuum.", "chuangmi.vacuum."],
     VacuumApi.VIOMI: ["viomi.vacuum."],
-    VacuumApi.ROBOROCK: ["roborock.vacuum", "rockrobo.vacuum"]
+    VacuumApi.IJAI: ["ijai.vacuum."],
+    VacuumApi.ROBOROCK: ["roborock.vacuum", "rockrobo.vacuum"],
 }
 
 API_EXCEPTIONS = {

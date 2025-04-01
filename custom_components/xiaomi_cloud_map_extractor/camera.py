@@ -10,13 +10,14 @@ from .coordinator import XiaomiCloudMapExtractorDataUpdateCoordinator
 from .entity import XiaomiCloudMapExtractorEntity
 from .types import XiaomiCloudMapExtractorConfigEntry
 
+
 _LOGGER = logging.getLogger(__name__)
 
 
 async def async_setup_entry(
-        hass: HomeAssistant,
-        config_entry: XiaomiCloudMapExtractorConfigEntry,
-        async_add_entities: AddEntitiesCallback,
+    hass: HomeAssistant,
+    config_entry: XiaomiCloudMapExtractorConfigEntry,
+    async_add_entities: AddEntitiesCallback,
 ) -> None:
     coordinator = config_entry.runtime_data.coordinator
     async_add_entities([XiaomiCloudMapExtractorCamera(coordinator, config_entry)])
@@ -25,9 +26,9 @@ async def async_setup_entry(
 class XiaomiCloudMapExtractorCamera(XiaomiCloudMapExtractorEntity, Camera):
 
     def __init__(
-            self: Self,
-            coordinator: XiaomiCloudMapExtractorDataUpdateCoordinator,
-            config_entry: XiaomiCloudMapExtractorConfigEntry
+        self: Self,
+        coordinator: XiaomiCloudMapExtractorDataUpdateCoordinator,
+        config_entry: XiaomiCloudMapExtractorConfigEntry,
     ) -> None:
         XiaomiCloudMapExtractorEntity.__init__(self, coordinator, config_entry)
         Camera.__init__(self)
@@ -37,7 +38,9 @@ class XiaomiCloudMapExtractorCamera(XiaomiCloudMapExtractorEntity, Camera):
     def frame_interval(self: Self) -> float:
         return 0.2
 
-    def camera_image(self: Self, width: int | None = None, height: int | None = None) -> bytes | None:
+    def camera_image(
+        self: Self, width: int | None = None, height: int | None = None
+    ) -> bytes | None:
         data = self._data()
         if data is None:
             return None
