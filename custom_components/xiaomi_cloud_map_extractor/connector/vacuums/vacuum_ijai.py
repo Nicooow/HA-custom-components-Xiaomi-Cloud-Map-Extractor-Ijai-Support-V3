@@ -1,14 +1,14 @@
 from vacuum_map_parser_ijai.map_data_parser import IjaiMapDataParser
 from miio.miot_device import MiotDevice
 
-from .base.vacuum_v2 import XiaomiCloudVacuumV2
+from .base.vacuum_v2 import BaseXiaomiCloudVacuumV2
 from .base.vacuum_base import VacuumConfig, VacuumApi
 import logging
 
 _LOGGER = logging.getLogger(__name__)
 
 
-class IjaiCloudVacuum(XiaomiCloudVacuumV2):
+class IjaiCloudVacuum(BaseXiaomiCloudVacuumV2):
     WIFI_STR_LEN = 18
 
     def __init__(self, vacuum_config: VacuumConfig):
