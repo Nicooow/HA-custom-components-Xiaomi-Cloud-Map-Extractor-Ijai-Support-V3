@@ -38,7 +38,7 @@ class IjaiCloudVacuum(BaseXiaomiCloudVacuumV2):
     def map_data_parser(self) -> IjaiMapDataParser:
         return self._ijai_map_data_parser
 
-    def get_map_url(self, map_name: str) -> str | None:
+    async def get_map_url(self, map_name: str) -> str | None:
         url = (
             self._connector.get_api_url(self._country)
             + "/v2/home/get_interim_file_url_pro"
@@ -46,7 +46,7 @@ class IjaiCloudVacuum(BaseXiaomiCloudVacuumV2):
         params = {
             "data": f'{{"obj_name":"{self._user_id}/{self._device_id}/{map_name}"}}'
         }
-        api_response = self._connector.execute_api_call_encrypted(url, params)
+        api_response = await self._connector.execute_api_call_encrypted(url, params)
         if (
             api_response is None
             or ("result" not in api_response)
