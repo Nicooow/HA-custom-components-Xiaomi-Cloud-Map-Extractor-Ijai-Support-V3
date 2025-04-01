@@ -1,9 +1,10 @@
 from vacuum_map_parser_ijai.map_data_parser import IjaiMapDataParser
 from miio.miot_device import MiotDevice
 
-from .vacuum_v2 import XiaomiCloudVacuumV2
-from .vacuum_base import VacuumConfig
+from .base.vacuum_v2 import XiaomiCloudVacuumV2
+from .base.vacuum_base import VacuumConfig, VacuumApi
 import logging
+from typing import Self
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -25,6 +26,10 @@ class IjaiCloudVacuum(XiaomiCloudVacuumV2):
             vacuum_config.image_config,
             vacuum_config.texts,
         )
+
+    @staticmethod
+    def vacuum_platform() -> VacuumApi:
+        return VacuumApi.IJAI
 
     @property
     def map_archive_extension(self) -> str:
