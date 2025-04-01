@@ -108,6 +108,7 @@ class XiaomiCloudConnector:
         timezone = datetime.datetime.now(tzlocal.get_localzone()).strftime("%z")
         self._timezone = f"GMT{timezone[:-2]}:{timezone[-2:]}"
         self.server = server
+        self.country = server
         self._session_data = None
 
     async def create_session(self: Self) -> None:

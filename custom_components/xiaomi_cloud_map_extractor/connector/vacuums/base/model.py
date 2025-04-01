@@ -15,6 +15,7 @@ from ...xiaomi_cloud.connector import XiaomiCloudConnector, XiaomiCloudDeviceInf
 @dataclass
 class VacuumConfig:
     connector: XiaomiCloudConnector
+    country: str
     device_info: XiaomiCloudDeviceInfo
     server: str
     device_id: str
