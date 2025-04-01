@@ -181,6 +181,7 @@ class XiaomiCloudMapExtractorConnector:
             self._config.host,
             self._config.token,
             self._config.model,
+            self._config.mac,
             self._config.colors,
             self._config.drawables,
             self._config.image_config,

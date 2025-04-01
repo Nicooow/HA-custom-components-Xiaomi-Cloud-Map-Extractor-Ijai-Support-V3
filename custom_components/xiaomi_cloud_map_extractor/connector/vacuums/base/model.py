@@ -21,6 +21,7 @@ class VacuumConfig:
     host: str
     token: str
     model: str
+    _mac: str
     palette: ColorsPalette
     drawables: list[Drawable]
     image_config: ImageConfig
