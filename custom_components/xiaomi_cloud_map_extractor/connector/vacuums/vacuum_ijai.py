@@ -4,7 +4,6 @@ from miio.miot_device import MiotDevice
 from .base.vacuum_v2 import XiaomiCloudVacuumV2
 from .base.vacuum_base import VacuumConfig, VacuumApi
 import logging
-from typing import Self
 
 _LOGGER = logging.getLogger(__name__)
 
