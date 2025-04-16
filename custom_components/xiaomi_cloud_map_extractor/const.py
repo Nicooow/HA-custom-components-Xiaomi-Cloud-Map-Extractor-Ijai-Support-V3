@@ -28,9 +28,35 @@ CONF_IMAGE_CONFIG_TRIM_BOTTOM: Final = "trim_bottom"
 
 CONF_COLORS: Final = "colors"
 
+CONF_ATTRIBUTES = "attributes"
+CONF_AUTO_UPDATE = "auto_update"
+CONF_AVAILABLE_API_DREAME = "dreame"
+CONF_AVAILABLE_API_ROIDMI = "roidmi"
+CONF_AVAILABLE_API_VIOMI = "viomi"
+CONF_AVAILABLE_API_IJAI = "ijai"
+CONF_AVAILABLE_API_XIAOMI = "xiaomi"
+CONF_AVAILABLE_COUNTRIES = ["cn", "de", "us", "ru", "tw", "sg", "in", "i2"]
+CONF_BOTTOM = "bottom"
+CONF_COLOR = "color"
+CONF_COLORS = "colors"
+CONF_COUNTRY = "country"
+CONF_DRAW = "draw"
+CONF_FORCE_API = "force_api"
+CONF_FONT = "font"
+CONF_FONT_SIZE = "font_size"
+CONF_LEFT = "left"
+CONF_MAP_TRANSFORM = "map_transformation"
+CONF_RIGHT = "right"
 CONF_ROOM_COLORS = "room_colors"
 
 CONF_DRAWABLES: Final = "drawables"
+CONF_AVAILABLE_APIS = [
+    CONF_AVAILABLE_API_XIAOMI,
+    CONF_AVAILABLE_API_VIOMI,
+    CONF_AVAILABLE_API_ROIDMI,
+    CONF_AVAILABLE_API_DREAME,
+    CONF_AVAILABLE_API_IJAI,
+]
 
 CONF_SIZES: Final = "sizes"
 

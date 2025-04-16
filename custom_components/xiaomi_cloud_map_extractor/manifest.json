@@ -1,9 +1,7 @@
 {
   "domain": "xiaomi_cloud_map_extractor",
   "name": "Xiaomi Cloud Map Extractor",
-  "codeowners": [
-    "@PiotrMachowski"
-  ],
+  "codeowners": ["@PiotrMachowski"],
   "config_flow": true,
   "dependencies": [],
   "documentation": "https://github.com/PiotrMachowski/Home-Assistant-custom-components-Xiaomi-Cloud-Map-Extractor",
@@ -18,7 +16,8 @@
     "vacuum-map-parser-roborock==0.1.2",
     "vacuum-map-parser-viomi==0.1.1",
     "vacuum-map-parser-roidmi==0.1.1",
-    "vacuum-map-parser-dreame==0.1.1"
+    "vacuum-map-parser-dreame==0.1.1",
+    "vacuum-map-parser-ijai@git+https://github.com/Nicooow/Python-package-vacuum-map-parser-ijai.git@protobuf_parsing"
   ],
   "version": "v3.0.0-beta"
 }

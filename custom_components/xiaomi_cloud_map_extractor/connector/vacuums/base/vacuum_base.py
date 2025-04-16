@@ -33,6 +33,7 @@ class BaseXiaomiCloudVacuum(ABC):
     def __init__(self: Self, vacuum_config: VacuumConfig) -> None:
         self.model = vacuum_config.model
         self._connector = vacuum_config.connector
+        self._country = vacuum_config.country
         self._server = vacuum_config.server
         self._user_id = vacuum_config.device_info.user_id
         self._device_id = vacuum_config.device_id
@@ -76,20 +77,24 @@ class BaseXiaomiCloudVacuum(ABC):
     async def get_map(self: Self) -> tuple[MapData, bool, bytes]:
         _LOGGER.debug("Getting map name...")
         map_name = await self.get_map_name()
-        _LOGGER.debug("Got map name: \"%s\".", map_name)
+        _LOGGER.debug('Got map name: "%s".', map_name)
         _LOGGER.debug("Downloading map...")
         raw_map_data = await self.get_raw_map_data(map_name)
         if raw_map_data is None:
             _LOGGER.error("FailedMapDownloadException")
             raise FailedMapDownloadException()
-        _LOGGER.debug("Downloaded raw map: \"%d\".", len(raw_map_data))
+        _LOGGER.debug('Downloaded raw map: "%d".', len(raw_map_data))
         map_stored = False
         if self._store_map_path is not None:
             self.store_map(raw_map_data)
             map_stored = True
         _LOGGER.debug("Parsing map...")
         map_data = self.decode_and_parse(raw_map_data)
-        _LOGGER.debug("Parsed map: (%d x %d)", map_data.image.dimensions.height, map_data.image.dimensions.width)
+        _LOGGER.debug(
+            "Parsed map: (%d x %d)",
+            map_data.image.dimensions.height,
+            map_data.image.dimensions.width,
+        )
         if map_data is not None:
             map_data.map_name = map_name
         else:
@@ -104,5 +109,8 @@ class BaseXiaomiCloudVacuum(ABC):
         return await self._connector.get_raw_map_data(map_url)
 
     def store_map(self: Self, raw_map_data: bytes) -> None:
-        with open(f"{self._store_map_path}/map_data_{self.model}.{self.map_archive_extension}", "wb") as raw_map_file:
+        with open(
+            f"{self._store_map_path}/map_data_{self.model}.{self.map_archive_extension}",
+            "wb",
+        ) as raw_map_file:
             raw_map_file.write(raw_map_data)
