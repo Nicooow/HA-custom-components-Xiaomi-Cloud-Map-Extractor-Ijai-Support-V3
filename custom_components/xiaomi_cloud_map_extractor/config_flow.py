@@ -14,6 +14,7 @@ from homeassistant.const import (
     CONF_MODEL,
     CONF_DEVICE_ID,
     CONF_NAME,
+    CONF_COUNTRY,
 )
 from homeassistant.core import callback
 from homeassistant.helpers.aiohttp_client import async_create_clientsession
